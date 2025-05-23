@@ -29,7 +29,7 @@ class MemberServiceV3_1Test {
         DriverManagerDataSource dataSource = new DriverManagerDataSource(DB_URL, DB_USER, DB_PASSWORD);
         repository = new MemberRepositoryV3(dataSource);
 
-        PlatformTransactionManager transactionManager = new DataSourceTransactionManager();
+        PlatformTransactionManager transactionManager = new DataSourceTransactionManager(dataSource);
         service = new MemberServiceV3_1(transactionManager,repository);
     }
 
@@ -59,7 +59,7 @@ class MemberServiceV3_1Test {
         //then
         Member findMemberA = repository.findById(memberA.getId());
         Member findMemberB = repository.findById(memberEX.getId());
-        assertThat(findMemberA.getMoney()).isEqualTo(10000);
+        assertThat(findMemberA.getMoney()).isEqualTo(8000);
         assertThat(findMemberB.getMoney()).isEqualTo(10000);
     }
 

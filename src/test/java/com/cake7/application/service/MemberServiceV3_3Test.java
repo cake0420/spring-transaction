@@ -94,7 +94,7 @@ class MemberServiceV3_3Test {
         //then
         Member findMemberA = repository.findById(memberA.getId());
         Member findMemberB = repository.findById(memberEX.getId());
-        assertThat(findMemberA.getMoney()).isEqualTo(8000);
+        assertThat(findMemberA.getMoney()).isEqualTo(10000);
         assertThat(findMemberB.getMoney()).isEqualTo(10000);
     }
 }

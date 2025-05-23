@@ -23,8 +23,8 @@ public class MemberRepositoryV3 {
         Connection connection = null;
         PreparedStatement pstmt = null;
 
-        connection = getConnection();
         try {
+            connection = getConnection();
             pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, member.getId());
             pstmt.setInt(2, member.getMoney());
@@ -109,7 +109,7 @@ public class MemberRepositoryV3 {
     }
 
     private Connection getConnection() throws SQLException {
-        Connection connection = dataSource.getConnection();
+        Connection connection = DataSourceUtils.getConnection(dataSource);
         log.info("connection={}, class={}", connection, connection.getClass());
         return connection;
     }

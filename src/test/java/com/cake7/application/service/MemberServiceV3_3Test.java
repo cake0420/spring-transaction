@@ -3,9 +3,11 @@ package com.cake7.application.service;
 import com.cake7.application.domain.Member;
 import com.cake7.application.repository.MemberRepositoryV3;
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
@@ -62,6 +64,15 @@ class MemberServiceV3_3Test {
         repository.delete(MEMBER_A);
         repository.delete(MEMBER_B);
         repository.delete(MEMBER_EX);
+    }
+
+
+    @Test
+    void AppCheck() {
+        log.info("repository={}", repository.getClass());
+        log.info("service={}", service.getClass());
+        Assertions.assertThat(AopUtils.isAopProxy(service)).isTrue();
+        Assertions.assertThat(AopUtils.isAopProxy(repository)).isFalse();
     }
 
     @Test

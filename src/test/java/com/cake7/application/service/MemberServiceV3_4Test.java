@@ -33,7 +33,7 @@ class MemberServiceV3_4Test {
 
 
     @TestConfiguration
-    static class TestConfig {
+        static class TestConfig {
 
         @Bean
         PlatformTransactionManager transactionManager(DataSource dataSource) {

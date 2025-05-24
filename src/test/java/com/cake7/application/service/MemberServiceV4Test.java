@@ -2,7 +2,7 @@ package com.cake7.application.service;
 
 import com.cake7.application.domain.Member;
 import com.cake7.application.repository.MemberRepository;
-import com.cake7.application.repository.MemberRepositoryV4_2;
+import com.cake7.application.repository.MemberRepositoryV5;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
@@ -48,7 +48,8 @@ class MemberServiceV4Test {
         @Bean
         MemberRepository memberRepositoryV4(DataSource dataSource) {
 //            return new MemberRepositoryV4_1(dataSource);
-            return new MemberRepositoryV4_2(dataSource);
+//            return new MemberRepositoryV4_2(dataSource);
+            return new MemberRepositoryV5(dataSource);
         }
 
         @Bean

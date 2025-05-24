@@ -1,11 +1,13 @@
 package com.cake7.application.exception.basic;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+@Slf4j
 public class UnCheckedAppTest {
 
     @Test
@@ -15,6 +17,16 @@ public class UnCheckedAppTest {
                 .isInstanceOf(RuntimeSQLException.class);
     }
 
+    @Test
+    void printEx() {
+        Controller controller = new Controller();
+        try {
+            controller.request();
+        } catch (Exception e) {
+            log.info("ex", e);
+
+        }
+    }
 
     static class Controller {
         Service service = new Service();
